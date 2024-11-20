@@ -3,6 +3,7 @@ import { UserContext } from "../../contexts/user-context";
 import { useContext, useState } from "react";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
+import Link from "next/link";
 const usersData = require("../../data/users-data");
 
 export default function LogIn() {
@@ -14,7 +15,6 @@ export default function LogIn() {
       <Nav />
       <Header />
       <h1 className="text-center text-2xl">Select a user:</h1>
-      {/* <p>Welcome {user.name}...</p> */}
       <div className="grid grid-cols-3 gap-1 justify-evenly p-20">
         {users.map(
           (user: {
@@ -32,11 +32,13 @@ export default function LogIn() {
                 }}
                 key={user.username}
               >
-                <img
-                  className="h-20 w-20 rounded-full"
-                  src={user.user_icon_url}
-                  alt=""
-                />
+                <Link href="/user">
+                  <img
+                    className="h-20 w-20 rounded-full object-cover"
+                    src={user.user_icon_url}
+                    alt=""
+                  />
+                </Link>
                 <p>{user.username}</p>
               </div>
             );
