@@ -8,7 +8,7 @@ const UserNav = () => {
         User
       </Link>
       <Link
-        href={"/user/new-letter"}
+        href={"/new-letter"}
         className="mx-5 text-white hover:text-blue-800"
       >
         Write a new letter
