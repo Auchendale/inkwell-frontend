@@ -12,7 +12,7 @@ type UserType = {
 };
 
 const UserLister = () => {
-  const [users, setUsers] = useState(usersData);
+  const [users] = useState(usersData);
 
   return (
     <section>

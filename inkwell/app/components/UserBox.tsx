@@ -15,7 +15,7 @@ interface UserProps {
 }
 
 const UserBox: FC<UserProps> = ({ singleUser }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   return (
     <div
@@ -34,7 +34,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
         });
       }}
     >
-      <Link href="/user">
+      <Link href="/bulletin-page">
         <img
           className="h-20 w-20 rounded-full object-cover"
           src={singleUser.user_icon_url}
