@@ -2,6 +2,7 @@ var users = [
     {
         username: "Kev",
         email: "kev.morel.musician@hotmail.com",
+        user_icon_url: null,
         friends: ["oscar"],
         location: {
             country: "England",
@@ -23,6 +24,7 @@ var users = [
     {
         username: "me",
         email: "me@gmail.com",
+        user_icon_url: null,
         friends: [],
         location: {
             country: "England",

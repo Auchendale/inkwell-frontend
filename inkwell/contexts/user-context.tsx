@@ -8,8 +8,11 @@ import {
 } from "react";
 
 export type User = {
-  name: string;
+  username: string;
   email: string;
+  img: string | undefined;
+  friends: string[];
+  location: { country: string; lat: number; long: number };
 };
 
 export interface UserContextInterface {
@@ -19,8 +22,11 @@ export interface UserContextInterface {
 
 const defaultState = {
   user: {
-    name: "Kev",
-    email: "kev.morel.musician@hotmail.com",
+    username: "",
+    email: "",
+    img: undefined,
+    friends: [],
+    location: { country: "", lat: 0, long: 0 },
   },
   setUser: (user: User) => {},
 } as UserContextInterface;
@@ -36,8 +42,11 @@ type UserProviderProps = {
 
 export default function UserProvider({ children }: UserProviderProps) {
   const [user, setUser] = useState<User>({
-    name: "Kev",
-    email: "kev.morel.musician@hotmail.com",
+    username: "",
+    email: "",
+    img: undefined,
+    friends: [],
+    location: { country: "", lat: 0, long: 0 },
   });
 
   return (
