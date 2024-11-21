@@ -5,7 +5,7 @@ import Link from "next/link";
 type UserType = {
   username: string;
   email: string;
-  user_icon_url?: string;
+  user_icon_url: string | undefined;
   friends: string[];
   location: { country: string; lat: number; long: number };
 };
@@ -21,14 +21,24 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
     <div
       className="m-5 bg-gray-800 shadow-2xl rounded-xl flex place-content-center p-2"
       onClick={() => {
-        setUser({ name: singleUser.username, email: singleUser.email });
+        setUser({
+          username: singleUser.username,
+          email: singleUser.email,
+          img: singleUser.user_icon_url,
+          friends: singleUser.friends,
+          location: {
+            country: singleUser.location.country,
+            lat: singleUser.location.lat,
+            long: singleUser.location.long,
+          },
+        });
       }}
     >
       <Link href="/user">
         <img
           className="h-20 w-20 rounded-full object-cover"
           src={singleUser.user_icon_url}
-          alt=""
+          alt="user icon"
         />
       </Link>
       <p>{singleUser.username}</p>

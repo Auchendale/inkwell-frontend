@@ -6,7 +6,7 @@ const usersData = require("../../data/users-data");
 type UserType = {
   username: string;
   email: string;
-  user_icon_url?: string;
+  user_icon_url: string | undefined;
   friends: string[];
   location: { country: string; lat: number; long: number };
 };
