@@ -7,13 +7,13 @@ const Nav = () => {
         Home
       </Link>
       <Link href="/log-in" className="hover:text-blue-500">
-        Log In
+        Change user
       </Link>
-      <Link href="/dashboard" className="hover:text-blue-500">
-        Dashboard
+      <Link href="/bulletin-page" className="hover:text-blue-500">
+        Bulletin board
       </Link>
-      <Link href="/aboutus" className="hover:text-blue-500">
-        About Us
+      <Link href="/" className="hover:text-blue-500">
+        Log out
       </Link>
     </nav>
   );
