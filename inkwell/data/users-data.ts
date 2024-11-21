@@ -1,4 +1,4 @@
-const users: {
+const usersData: {
   username: string;
   email: string;
   user_icon_url?: string | null;
@@ -123,4 +123,4 @@ const users: {
   },
 ];
 
-module.exports = users;
+module.exports = usersData;

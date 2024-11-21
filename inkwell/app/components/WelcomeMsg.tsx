@@ -6,7 +6,7 @@ const WelcomeMsg = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <section className="text-center">
+    <section className="text-center my-5">
       <h1>Welcome {user.username}...</h1>
     </section>
   );

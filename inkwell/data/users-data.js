@@ -1,4 +1,4 @@
-var users = [
+var usersData = [
     {
         username: "Kev",
         email: "kev.morel.musician@hotmail.com",
@@ -110,4 +110,4 @@ var users = [
         },
     },
 ];
-module.exports = users;
+module.exports = usersData;
