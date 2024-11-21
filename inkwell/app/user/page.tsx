@@ -1,14 +1,13 @@
-"use client";
-import { UserContext } from "@/contexts/user-context";
-import { useContext } from "react";
+import Header from "../components/Header";
+import UserDetails from "../components/UserDetails";
+import WelcomeMsg from "../components/WelcomeMsg";
 
 export default function UserPage() {
-  const { user } = useContext(UserContext);
-
   return (
     <section>
-      <h1>Welcome {user.name}...</h1>
-      <p>Display user info here</p>
+      <Header />
+      <WelcomeMsg />
+      <UserDetails />
     </section>
   );
 }
