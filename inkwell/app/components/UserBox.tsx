@@ -18,31 +18,31 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
   const { setUser } = useContext(UserContext);
 
   return (
-    <div
-      className="m-5 bg-gray-800 shadow-2xl rounded-xl flex place-content-center p-2"
-      onClick={() => {
-        setUser({
-          username: singleUser.username,
-          email: singleUser.email,
-          img: singleUser.user_icon_url,
-          friends: singleUser.friends,
-          location: {
-            country: singleUser.location.country,
-            lat: singleUser.location.lat,
-            long: singleUser.location.long,
-          },
-        });
-      }}
-    >
-      <Link href="/bulletin-page">
+    <Link href="/bulletin-page">
+      <div
+        className="m-3 dark:bg-gray-800 shadow-2xl rounded-xl flex p-2 flex-col items-center"
+        onClick={() => {
+          setUser({
+            username: singleUser.username,
+            email: singleUser.email,
+            img: singleUser.user_icon_url,
+            friends: singleUser.friends,
+            location: {
+              country: singleUser.location.country,
+              lat: singleUser.location.lat,
+              long: singleUser.location.long,
+            },
+          });
+        }}
+      >
         <img
-          className="h-20 w-20 rounded-full object-cover"
+          className="h-20 w-20 rounded-xl object-cover"
           src={singleUser.user_icon_url}
           alt="user icon"
         />
-      </Link>
-      <p>{singleUser.username}</p>
-    </div>
+        <p className="p-2">{singleUser.username}</p>
+      </div>
+    </Link>
   );
 };
 
