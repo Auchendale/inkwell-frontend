@@ -1,9 +1,12 @@
+import Link from "next/link";
 import UserDetails from "./UserDetails";
 
 const UserBtns = () => {
   return (
     <div className="p-5 my-5 gap-10 grid grid-cols-2">
-      <button className="btn">Write a new letter</button>
+      <Link href={"/new-letter"} className="btn">
+        <button>Write a new letter</button>
+      </Link>
       <button className="btn">Post on the bulletin board</button>
       <button className="btn">Saved letters</button>
       <button className="btn">Settings</button>
