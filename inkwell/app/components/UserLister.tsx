@@ -17,7 +17,7 @@ const UserLister = () => {
     {
       username: "",
       email: "",
-      user_icon_url: require("../../assets/user_placeholder.png"),
+      user_icon_url: undefined,
       friends: [],
       location: { country: "", lat: 0, long: 0 },
     },
