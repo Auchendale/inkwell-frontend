@@ -19,7 +19,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
 
   return (
     <div
-      className="m-5 bg-gray-800 shadow-2xl rounded-xl flex place-content-center p-2"
+      className="m-3 dark:bg-gray-800 shadow-2xl rounded-xl flex p-2 flex-col items-center"
       onClick={() => {
         setUser({
           username: singleUser.username,
@@ -41,7 +41,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
           alt="user icon"
         />
       </Link>
-      <p>{singleUser.username}</p>
+      <p className="p-2">{singleUser.username}</p>
     </div>
   );
 };
