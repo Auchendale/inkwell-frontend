@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserBox from "./UserBox";
-const usersData = require("../../data/users-data");
+import axios from "axios";
+// const usersData = require("../../data/users-data");
 
 type UserType = {
   username: string;
@@ -12,7 +13,26 @@ type UserType = {
 };
 
 const UserLister = () => {
-  const [users] = useState(usersData);
+  const [users, setUsers] = useState([
+    {
+      username: "",
+      email: "",
+      user_icon_url: require("../../assets/user_placeholder.png"),
+      friends: [],
+      location: { country: "", lat: 0, long: 0 },
+    },
+  ]);
+
+  useEffect(() => {
+    axios
+      .get("https://inkwell-backend-kvij.onrender.com/api/users")
+      .then((response) => {
+        setUsers(response.data.users);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [users]);
 
   return (
     <section>

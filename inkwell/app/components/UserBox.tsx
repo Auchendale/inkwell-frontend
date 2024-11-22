@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { UserContext } from "@/contexts/user-context";
 import Link from "next/link";
+import Image from "next/image";
 
 type UserType = {
   username: string;
@@ -35,11 +36,19 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
           });
         }}
       >
-        <img
-          className="h-20 w-20 rounded-xl object-cover"
-          src={singleUser.user_icon_url}
-          alt="user icon"
-        />
+        {singleUser.user_icon_url ? (
+          <img
+            className="h-20 w-20 rounded-xl object-cover"
+            src={singleUser.user_icon_url}
+            alt="user icon"
+          />
+        ) : (
+          <Image
+            className="h-20 w-20 rounded-xl object-cover"
+            src={require("../../assets/user_placeholder.png")}
+            alt="default user icon"
+          />
+        )}
         <p className="p-2">{singleUser.username}</p>
       </div>
     </Link>
