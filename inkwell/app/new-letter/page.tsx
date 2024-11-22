@@ -1,4 +1,5 @@
 "use client";
+import DrawingPad from "../components/DrawingPad";
 import LogoHeader from "../components/LogoHeader";
 import Nav from "../components/Nav";
 
@@ -7,7 +8,7 @@ export default function NewLetter() {
     <div>
       <Nav />
       <LogoHeader />
-      <p className="text-center">Render canvas here...</p>
+      <DrawingPad />
     </div>
   );
 }
