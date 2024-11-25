@@ -9,22 +9,27 @@ const DrawingPad = () => {
   const [canvas, setCanvas] = useState<any>(null);
   const { user } = useContext(UserContext);
 
-  useEffect(() => {
-    if (canvasRef.current) {
-      const initCanvas: any = new Canvas(canvasRef.current, {
-        width: 500,
-        height: 500,
-      });
-      initCanvas.backgroundColor = "#fefcaf";
-      initCanvas.renderAll();
+  useEffect(
+    () => {
+      if (canvasRef.current) {
+        const initCanvas: any = new Canvas(canvasRef.current, {
+          width: 500,
+          height: 500,
+        });
+        initCanvas.backgroundColor = "#fefcaf";
+        initCanvas.renderAll();
 
-      setCanvas(initCanvas);
+        setCanvas(initCanvas);
 
-      return () => {
-        initCanvas.dispose();
-      };
-    }
-  }, []);
+        return () => {
+          initCanvas.dispose();
+        };
+      }
+    },
+    [
+      // make screen size a dependency?
+    ]
+  );
 
   const addRectangle = () => {
     if (canvas) {
