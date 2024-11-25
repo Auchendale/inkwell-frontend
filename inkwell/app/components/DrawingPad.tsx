@@ -1,13 +1,19 @@
 "use client";
 import { Canvas, PencilBrush, Rect, Textbox } from "fabric";
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext, ChangeEvent } from "react";
 import { UserContext } from "@/contexts/user-context";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 const DrawingPad = () => {
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState<any>(null);
+  const [recipient, setRecipient] = useState<string>("default");
+  const [missingRecipient, setMissingRecipient] = useState<Boolean>(false);
   const { user } = useContext(UserContext);
+  const router = useRouter()
+  
 
   useEffect(
     () => {
@@ -30,6 +36,7 @@ const DrawingPad = () => {
       // make screen size a dependency?
     ]
   );
+
 
   const addRectangle = () => {
     if (canvas) {
@@ -58,6 +65,10 @@ const DrawingPad = () => {
   };
 
   const sendLetter = () => {
+    if(recipient === "default"){ 
+      setMissingRecipient(true)
+      return
+    }
     if (canvas) {
       const dataURL = canvas.toDataURL({
         format: "png",
@@ -66,11 +77,14 @@ const DrawingPad = () => {
       axios
         .post("https://inkwell-backend-kvij.onrender.com/api/letters", {
           sender: user.username,
-          recipient: "kieran",
+          recipient: recipient,
           content: { letter: dataURL },
         })
         .then((response) => {
-          console.log(response);
+          setMissingRecipient(false)
+          router.push('/bulletin-page')
+          
+          
         })
         .catch((err) => {
           console.log(err);
@@ -81,8 +95,12 @@ const DrawingPad = () => {
   const togglePen = () => {
     if (canvas) {
       const brush = (canvas.freeDrawingBrush = new PencilBrush(canvas));
-      canvas.isDrawingMode = !canvas.isDrawingMode
+      canvas.isDrawingMode = !canvas.isDrawingMode;
     }
+  };
+
+  const handleRecipientChange = ( event: ChangeEvent<HTMLSelectElement>) => {
+    setRecipient(event.target.value)    
   };
 
   return (
@@ -102,9 +120,23 @@ const DrawingPad = () => {
         </button>
       </nav>
       <canvas className="border-8 m-5" id="canvas" ref={canvasRef}></canvas>
+      <label htmlFor="friends">Send to:</label>
+      <select id="friends" onChange={handleRecipientChange}>
+        <option value="default" defaultValue={"default"}>
+          Select Friend
+        </option>
+        {user.friends.map((friend) => {
+          return (
+            <option value={friend} key={friend}>
+              {friend}
+            </option>
+          );
+        })}
+      </select>
       <button className="border-8 m-10" onClick={sendLetter}>
         Send Letter
       </button>
+      {missingRecipient? <p>Please select a recipient</p>: null}
     </div>
   );
 };
