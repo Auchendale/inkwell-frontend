@@ -33,10 +33,9 @@ const SelectedLetter: FC<props> = ({ id }) => {
     axios
       .get(`https://inkwell-backend-j9si.onrender.com/api/letters/${id}`)
       .then((res) => {
-        console.log(res.data.letter);
         setLetter(res.data.letter);
       });
-  }, [letter]);
+  }, [letter, id]);
   return (
     <div>
       <img src={letter.content.letter} alt={`letter from ${letter.sender}`} />
