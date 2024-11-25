@@ -21,7 +21,7 @@ const LetterViewer = () => {
   const { user } = useContext(UserContext);
   useEffect(() => {
     axios
-      .get("https://inkwell-backend-kvij.onrender.com/api/letters", {
+      .get("https://inkwell-backend-j9si.onrender.com/api/letters", {
         params: {
           recipient: user.username,
         },

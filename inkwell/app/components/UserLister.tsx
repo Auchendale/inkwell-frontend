@@ -25,14 +25,14 @@ const UserLister = () => {
 
   useEffect(() => {
     axios
-      .get("https://inkwell-backend-kvij.onrender.com/api/users")
+      .get("https://inkwell-backend-j9si.onrender.com/api/users")
       .then((response) => {
         setUsers(response.data.users);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [users]);
+  }, []);
 
   return (
     <section>
