@@ -76,9 +76,8 @@ const DrawingPad = () => {
       const dataURL = canvas.toDataURL({
         format: "png",
       });
-      console.log(dataURL);
       axios
-        .post("https://inkwell-backend-kvij.onrender.com/api/letters", {
+        .post("https://inkwell-backend-j9si.onrender.com/api/letters", {
           sender: user.username,
           recipient: recipient,
           content: { letter: dataURL },
