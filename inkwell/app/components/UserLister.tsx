@@ -37,7 +37,7 @@ const UserLister = () => {
   return (
     <section>
       <h1 className="text-center text-2xl">Select a user:</h1>
-      <div className="grid grid-cols-3 gap-1 justify-evenly p-20">
+      <div className="grid grid-cols-3 gap-1 justify-evenly p-18">
         {users.map((singleUser: UserType) => {
           return <UserBox singleUser={singleUser} key={singleUser.username} />;
         })}
