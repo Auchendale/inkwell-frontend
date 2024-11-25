@@ -1,10 +1,9 @@
 "use client";
-import { Canvas, PencilBrush, Rect, Textbox } from "fabric";
+import { Canvas, PencilBrush,  Textbox } from "fabric";
 import { useEffect, useRef, useState, useContext, ChangeEvent } from "react";
 import { UserContext } from "@/contexts/user-context";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
 
 const DrawingPad = () => {
   const canvasRef = useRef(null);
@@ -12,8 +11,7 @@ const DrawingPad = () => {
   const [recipient, setRecipient] = useState<string>("default");
   const [missingRecipient, setMissingRecipient] = useState<Boolean>(false);
   const { user } = useContext(UserContext);
-  const router = useRouter()
-  
+  const router = useRouter();
 
   useEffect(
     () => {
@@ -24,35 +22,40 @@ const DrawingPad = () => {
         });
         initCanvas.backgroundColor = "#fefcaf";
         initCanvas.renderAll();
-
         setCanvas(initCanvas);
-
         return () => {
           initCanvas.dispose();
-        };
-      }
-    },
+        }
+    }},
     [
       // make screen size a dependency?
     ]
   );
 
-
-  const addRectangle = () => {
+  const addNewCanvas = () => {
     if (canvas) {
-      const rect = new Rect({
-        top: 100,
-        left: 50,
-        width: 100,
-        height: 75,
+      canvas.dispose();
+    }
+    if (canvasRef.current) {
+      const initCanvas: any = new Canvas(canvasRef.current, {
+        width: 500,
+        height: 500,
       });
-      canvas.add(rect);
+      initCanvas.backgroundColor = "#fefcaf";
+      initCanvas.renderAll();
+      setCanvas(initCanvas);
+      return () => {
+        initCanvas.dispose();
+      };
     }
   };
+
   const addTextBox = () => {
     if (canvas) {
       const textBox = new Textbox("Write your letter here", {
         fontStyle: "italic",
+        fontFamily: "font-sans",
+        width: 200
       });
       canvas.add(textBox);
     }
@@ -65,9 +68,9 @@ const DrawingPad = () => {
   };
 
   const sendLetter = () => {
-    if(recipient === "default"){ 
-      setMissingRecipient(true)
-      return
+    if (recipient === "default") {
+      setMissingRecipient(true);
+      return;
     }
     if (canvas) {
       const dataURL = canvas.toDataURL({
@@ -81,10 +84,8 @@ const DrawingPad = () => {
           content: { letter: dataURL },
         })
         .then((response) => {
-          setMissingRecipient(false)
-          router.push('/bulletin-page')
-          
-          
+          setMissingRecipient(false);
+          router.push("/bulletin-page");
         })
         .catch((err) => {
           console.log(err);
@@ -99,15 +100,15 @@ const DrawingPad = () => {
     }
   };
 
-  const handleRecipientChange = ( event: ChangeEvent<HTMLSelectElement>) => {
-    setRecipient(event.target.value)    
+  const handleRecipientChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setRecipient(event.target.value);
   };
 
   return (
     <div className="h-screen flex flex-col items-center justify-center">
       <nav>
-        <button className="border-8 m-5" onClick={addRectangle}>
-          Rectangle
+        <button className="border-8 m-5" onClick={addNewCanvas}>
+          Reset Canvas
         </button>
         <button className="border-8 m-5" onClick={addTextBox}>
           Text box
@@ -136,7 +137,7 @@ const DrawingPad = () => {
       <button className="border-8 m-10" onClick={sendLetter}>
         Send Letter
       </button>
-      {missingRecipient? <p>Please select a recipient</p>: null}
+      {missingRecipient ? <p>Please select a recipient</p> : null}
     </div>
   );
 };
