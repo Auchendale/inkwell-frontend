@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const LogInBtn = () => {
   return (
-    <Link href="/log-in">
+    <Link className="p-20" href="/log-in">
       <button className="btn">Log in</button>
     </Link>
   );
