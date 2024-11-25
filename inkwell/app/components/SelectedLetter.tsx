@@ -31,7 +31,7 @@ const SelectedLetter: FC<props> = ({ id }) => {
   });
   useEffect(() => {
     axios
-      .get(`https://inkwell-backend-kvij.onrender.com/api/letters/${id}`)
+      .get(`https://inkwell-backend-j9si.onrender.com/api/letters/${id}`)
       .then((res) => {
         console.log(res.data.letter);
         setLetter(res.data.letter);
