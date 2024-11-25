@@ -2,6 +2,7 @@ import { FC, useContext } from "react";
 import { UserContext } from "@/contexts/user-context";
 import Link from "next/link";
 import Image from "next/image";
+import {flagGetter} from "../../utils/utils.ts"
 
 type UserType = {
   username: string;
@@ -17,6 +18,7 @@ interface UserProps {
 
 const UserBox: FC<UserProps> = ({ singleUser }) => {
   const { setUser } = useContext(UserContext);
+  const countryCode = flagGetter(singleUser.location.country)
 
   return (
     <Link href="/bulletin-page">
@@ -49,6 +51,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
             alt="default user icon"
           />
         )}
+        <img src={`https://flagsapi.com/${countryCode}/shiny/64.png`}/>
         <p className="p-2">{singleUser.username}</p>
       </div>
     </Link>
