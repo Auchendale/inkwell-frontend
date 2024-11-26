@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import UserBox from "./UserBox";
 import axios from "axios";
+import LoadingBar from "./LoadingBar";
 
 type UserType = {
   username: string;
@@ -13,17 +14,23 @@ type UserType = {
 
 const UserLister = () => {
   const [users, setUsers] = useState<Array<UserType>>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios
       .get("https://inkwell-backend-j9si.onrender.com/api/users")
       .then((response) => {
         setUsers(response.data.users);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  if (isLoading) {
+    return <LoadingBar/>;
+  }
 
   return (
     <section>
