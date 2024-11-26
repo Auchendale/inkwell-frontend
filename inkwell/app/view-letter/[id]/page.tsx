@@ -1,5 +1,4 @@
 "use client";
-
 import SelectedLetter from "@/app/components/SelectedLetter";
 import { useParams } from "next/navigation";
 

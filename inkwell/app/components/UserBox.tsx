@@ -23,7 +23,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
   return (
     <Link href="/bulletin-page">
       <div
-        className="m-3 dark:bg-gray-800 shadow-2xl rounded-xl flex p-2 flex-col items-center"
+        className="m-3 dark:bg-gray-800 bg-white shadow-lg rounded-xl flex flex-col items-center p-4 hover:shadow-2xl transition-all cursor-pointer"
         onClick={() => {
           setUser({
             username: singleUser.username,
@@ -40,19 +40,24 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
       >
         {singleUser.user_icon_url ? (
           <img
-            className="h-20 w-20 rounded-xl object-cover"
+            className="h-24 w-24 rounded-xl object-cover mb-2"
             src={singleUser.user_icon_url}
             alt="user icon"
           />
         ) : (
           <Image
-            className="h-20 w-20 rounded-xl object-cover"
+            className="h-24 w-24 rounded-full object-cover mb-2"
             src={require("../../assets/user_placeholder.png")}
             alt="default user icon"
           />
         )}
-        <img src={`https://flagsapi.com/${countryCode}/shiny/64.png`} />
-        <p className="p-2">{singleUser.username}</p>
+        <img
+          className="mb-2"
+          src={`https://flagsapi.com/${countryCode}/shiny/64.png`}
+        />
+        <p className="text-lg font-semibold text-gray-900 dark:text-white">
+          {singleUser.username}
+        </p>
       </div>
     </Link>
   );

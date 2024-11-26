@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "@/contexts/user-context";
 import Link from "next/link";
@@ -67,7 +67,6 @@ const LetterViewer = () => {
     return item
 
   }
-
   useEffect(() => {
     axios
       .get("https://inkwell-backend-j9si.onrender.com/api/letters", {

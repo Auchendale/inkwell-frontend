@@ -3,7 +3,7 @@ import LetterViewer from "./LetterViewer";
 const PigeonHoles = () => {
   return (
     <>
-      <select>
+      <select className="p-2 m-5 border-2 rounded">
         <option value="all">all</option>
         <option value="sender">sender</option>
         <option value="date_sent">date sent</option>
