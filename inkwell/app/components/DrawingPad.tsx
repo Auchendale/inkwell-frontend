@@ -4,20 +4,24 @@ import { useEffect, useRef, useState, useContext, ChangeEvent } from "react";
 import { UserContext } from "@/contexts/user-context";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import LoadingBar from "./LoadingBar";
 
 const DrawingPad = () => {
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState<any>(null);
   const [recipient, setRecipient] = useState<string>("default");
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [missingRecipient, setMissingRecipient] = useState<Boolean>(false);
   const { user } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {
+
     if (canvasRef.current) {
       const initCanvas = new Canvas(canvasRef.current, {
         width: 210 * 2,
         height: 297 * 2,
+        skipOffscreen: true
       });
       initCanvas.backgroundColor = "#fefcaf";
       initCanvas.renderAll();
@@ -36,6 +40,7 @@ const DrawingPad = () => {
       const initCanvas: any = new Canvas(canvasRef.current, {
         width: 210 * 2,
         height: 297 * 2,
+        skipOffscreen: true
       });
       initCanvas.backgroundColor = "#fefcaf";
       initCanvas.renderAll();
@@ -68,6 +73,7 @@ const DrawingPad = () => {
       setMissingRecipient(true);
       return;
     }
+    setIsLoading(true)
     if (canvas) {
       const dataURL = canvas.toDataURL({
         format: "png",
@@ -80,6 +86,7 @@ const DrawingPad = () => {
         })
         .then((response) => {
           setMissingRecipient(false);
+          setIsLoading(false)
           router.push("/bulletin-page");
         })
         .catch((err) => {
@@ -98,6 +105,11 @@ const DrawingPad = () => {
   const handleRecipientChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setRecipient(event.target.value);
   };
+
+  if (isLoading) {
+    return <LoadingBar/>;
+  }
+  
 
   return (
     <div className="h-screen flex flex-col items-center justify-center">
