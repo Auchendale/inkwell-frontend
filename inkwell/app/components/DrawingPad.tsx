@@ -1,5 +1,5 @@
 "use client";
-import { Canvas, PencilBrush, Textbox } from "fabric";
+import { Canvas, FabricImage, PencilBrush, Textbox } from "fabric";
 import { useEffect, useRef, useState, useContext, ChangeEvent } from "react";
 import { UserContext } from "@/contexts/user-context";
 import axios from "axios";
@@ -13,25 +13,20 @@ const DrawingPad = () => {
   const { user } = useContext(UserContext);
   const router = useRouter();
 
-  useEffect(
-    () => {
-      if (canvasRef.current) {
-        const initCanvas: any = new Canvas(canvasRef.current, {
-          width: 500,
-          height: 500,
-        });
-        initCanvas.backgroundColor = "#fefcaf";
-        initCanvas.renderAll();
-        setCanvas(initCanvas);
-        return () => {
-          initCanvas.dispose();
-        };
-      }
-    },
-    [
-      // make screen size a dependency?
-    ]
-  );
+  useEffect(() => {
+    if (canvasRef.current) {
+      const initCanvas = new Canvas(canvasRef.current, {
+        width: 210 * 2,
+        height: 297 * 2,
+      });
+      initCanvas.backgroundColor = "#fefcaf";
+      initCanvas.renderAll();
+      setCanvas(initCanvas);
+      return () => {
+        initCanvas.dispose();
+      };
+    }
+  }, []);
 
   const addNewCanvas = () => {
     if (canvas) {
@@ -39,8 +34,8 @@ const DrawingPad = () => {
     }
     if (canvasRef.current) {
       const initCanvas: any = new Canvas(canvasRef.current, {
-        width: 500,
-        height: 500,
+        width: 210 * 2,
+        height: 297 * 2,
       });
       initCanvas.backgroundColor = "#fefcaf";
       initCanvas.renderAll();
@@ -133,7 +128,7 @@ const DrawingPad = () => {
         </button>
       </nav>
       <canvas
-        className="w-3/4 h-96 border-4 border-gray-300 shadow-md rounded-lg bg-yellow-200"
+        className="w-3/4 h-96 border-4 border-gray-300 shadow-md rounded-lg "
         id="canvas"
         ref={canvasRef}
       ></canvas>
