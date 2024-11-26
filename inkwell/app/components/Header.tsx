@@ -1,6 +1,6 @@
 import Image from "next/image";
 const unparsedLogo = require("../../assets/inkwell_logo1.png");
-const logo = JSON.parse(JSON.stringify(unparsedLogo))
+const logo = JSON.parse(JSON.stringify(unparsedLogo));
 
 const Header = () => {
   return (

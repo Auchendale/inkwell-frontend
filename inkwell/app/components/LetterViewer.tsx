@@ -48,19 +48,25 @@ const LetterViewer = () => {
   // };
 
   return (
-    <ul className="grid grid-cols-3 gap-5 justify-evenly">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-evenly p-4">
       {letters.map((letter: LetterType) => {
         return (
-          <li key={letter._id} className="border flex flex-col text-center">
+          <li
+            key={letter._id}
+            className="border border-gray-300 rounded-lg shadow-lg flex flex-col items-center p-4 bg-white hover:shadow-xl transition-all"
+          >
             <Link href={`/view-letter/${letter._id}`}>
               <Image
                 src={require("../../assets/closed_letter_sealed1.png")}
                 alt={`letter from ${letter.sender}`}
                 // onClick={toggleImage}
+                width={120}
+                height={120}
+                className="mb-4"
               />
             </Link>
-            <p>From: {letter.sender}</p>
-            <p>Date: {letter.date_sent}</p>
+            <p className="text-lg font-semibold text-gray-700">{`From: ${letter.sender}`}</p>
+            <p className="text-sm text-gray-500">{`Date: ${letter.date_sent}`}</p>
           </li>
         );
       })}

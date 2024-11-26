@@ -1,5 +1,6 @@
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
+import "../../assets/css/selected-letter.css"; // Import the new CSS file
 
 interface Props {
   id: string;
@@ -29,6 +30,7 @@ const SelectedLetter: FC<Props> = ({ id }) => {
     is_saved: false,
     date_sent: "",
   });
+
   useEffect(() => {
     axios
       .get(`https://inkwell-backend-j9si.onrender.com/api/letters/${id}`)
@@ -36,9 +38,14 @@ const SelectedLetter: FC<Props> = ({ id }) => {
         setLetter(res.data.letter);
       });
   }, [letter, id]);
+
   return (
-    <div>
-      <img src={letter.content.letter} alt={`letter from ${letter.sender}`} />
+    <div className="letter-container">
+      <img
+        className="letter-image"
+        src={letter.content.letter}
+        alt={`letter from ${letter.sender}`}
+      />
     </div>
   );
 };
