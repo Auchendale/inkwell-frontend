@@ -1,5 +1,5 @@
 "use client";
-import { Canvas, PencilBrush,  Textbox } from "fabric";
+import { Canvas, PencilBrush, Textbox } from "fabric";
 import { useEffect, useRef, useState, useContext, ChangeEvent } from "react";
 import { UserContext } from "@/contexts/user-context";
 import axios from "axios";
@@ -13,24 +13,20 @@ const DrawingPad = () => {
   const { user } = useContext(UserContext);
   const router = useRouter();
 
-  useEffect(
-    () => {
-      if (canvasRef.current) {
-        const initCanvas: any = new Canvas(canvasRef.current, {
-          width: 500,
-          height: 500,
-        });
-        initCanvas.backgroundColor = "#fefcaf";
-        initCanvas.renderAll();
-        setCanvas(initCanvas);
-        return () => {
-          initCanvas.dispose();
-        }
-    }},
-    [
-      // make screen size a dependency?
-    ]
-  );
+  useEffect(() => {
+    if (canvasRef.current) {
+      const initCanvas: any = new Canvas(canvasRef.current, {
+        width: 500,
+        height: 500,
+      });
+      initCanvas.backgroundColor = "#fefcaf";
+      initCanvas.renderAll();
+      setCanvas(initCanvas);
+      return () => {
+        initCanvas.dispose();
+      };
+    }
+  }, []);
 
   const addNewCanvas = () => {
     if (canvas) {
@@ -55,7 +51,7 @@ const DrawingPad = () => {
       const textBox = new Textbox("Write your letter here", {
         fontStyle: "italic",
         fontFamily: "font-sans",
-        width: 200
+        width: 200,
       });
       canvas.add(textBox);
     }
