@@ -1,6 +1,8 @@
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
 import "../../assets/css/selected-letter.css"; // Import the new CSS file
+import Nav from "./Nav";
+import { useRouter } from "next/navigation";
 
 interface Props {
   id: string;
@@ -39,14 +41,31 @@ const SelectedLetter: FC<Props> = ({ id }) => {
       });
   }, [letter, id]);
 
+  const router = useRouter();
+
   return (
-    <div className="letter-container">
-      <img
-        className="letter-image"
-        src={letter.content.letter}
-        alt={`letter from ${letter.sender}`}
-      />
-    </div>
+    <>
+      <Nav />
+      <div className="absolute border bg-white  p-3 rounded-xl top-1/4 left-1/2 transform -translate-x-1/2">
+        <p>from: {letter.sender}</p>
+        <p>date: {letter.date_sent}</p>
+      </div>
+      <div className="letter-container">
+        <img
+          className="letter-image"
+          src={letter.content.letter}
+          alt={`letter from ${letter.sender}`}
+        />
+      </div>
+      <button
+        className="btn absolute border my-40 bg-white  p-3 rounded-xl top-3/4 left-1/2 transform -translate-x-1/2"
+        onClick={() => {
+          router.push("/user");
+        }}
+      >
+        Back
+      </button>
+    </>
   );
 };
 
