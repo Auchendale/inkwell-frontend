@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import UserBox from "./UserBox";
 import axios from "axios";
-// const usersData = require("../../data/users-data");
 
 type UserType = {
   username: string;
@@ -13,15 +12,7 @@ type UserType = {
 };
 
 const UserLister = () => {
-  const [users, setUsers] = useState([
-    {
-      username: "",
-      email: "",
-      user_icon_url: undefined,
-      friends: [],
-      location: { country: "", lat: 0, long: 0 },
-    },
-  ]);
+  const [users, setUsers] = useState<Array<UserType>>([]);
 
   useEffect(() => {
     axios

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
 
-interface props {
+interface Props {
   id: string;
 }
 
@@ -17,7 +17,7 @@ type LetterType = {
   date_sent: string;
 };
 
-const SelectedLetter: FC<props> = ({ id }) => {
+const SelectedLetter: FC<Props> = ({ id }) => {
   const [letter, setLetter] = useState<LetterType>({
     _id: "",
     sender: "",

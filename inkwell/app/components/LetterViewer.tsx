@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "@/contexts/user-context";
 import Link from "next/link";
@@ -19,8 +19,9 @@ type LetterType = {
 
 const LetterViewer = () => {
   // const [isClicked, setIsClicked] = useState(false);
-  const [letters, setLetters] = useState([]);
+  const [letters, setLetters] = useState<Array<LetterType>>([]);
   const { user } = useContext(UserContext);
+
   useEffect(() => {
     axios
       .get("https://inkwell-backend-j9si.onrender.com/api/letters", {
@@ -32,7 +33,7 @@ const LetterViewer = () => {
         setLetters(res.data.letters);
       })
       .catch((err) => err);
-  }, [letters, user.username]);
+  }, [user.username]);
 
   // const toggleImage = (event: unknown) => {
   //   setIsClicked(true);
@@ -58,8 +59,8 @@ const LetterViewer = () => {
                 // onClick={toggleImage}
               />
             </Link>
-            <p>{`From: ${letter.sender}`}</p>
-            <p>{`Date: ${letter.date_sent}`}</p>
+            <p>From: {letter.sender}</p>
+            <p>Date: {letter.date_sent}</p>
           </li>
         );
       })}
