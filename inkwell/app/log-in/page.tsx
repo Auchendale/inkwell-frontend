@@ -1,10 +1,10 @@
-import Header from "../components/Header";
+import DarkLogo from "../components/DarkLogo";
 import UserLister from "../components/UserLister";
 
 export default function LogIn() {
   return (
     <>
-      <Header />
+      <DarkLogo />
       <UserLister />
     </>
   );
