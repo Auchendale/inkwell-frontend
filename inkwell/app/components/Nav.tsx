@@ -4,9 +4,21 @@ import axios from "axios";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
+type LetterType = {
+  _id: string;
+  sender: string;
+  recipient: string;
+  content: {
+    letter: string;
+  };
+  is_opened: boolean;
+  is_saved: boolean;
+  date_sent: string;
+};
+
 const Nav = () => {
   const { user } = useContext(UserContext);
-  const [unreadLetters, setUnreadLetters] = useState([]);
+  const [unreadLetters, setUnreadLetters] = useState<Array<LetterType>>([]);
 
   useEffect(() => {
     axios
