@@ -11,6 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        letterBackground: {
+          50: "#fefce8",
+          100: "#fef0aa",
+          200: "#223127",
+        },
       },
     },
   },

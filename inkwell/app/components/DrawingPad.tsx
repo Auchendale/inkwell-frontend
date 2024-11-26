@@ -13,20 +13,25 @@ const DrawingPad = () => {
   const { user } = useContext(UserContext);
   const router = useRouter();
 
-  useEffect(() => {
-    if (canvasRef.current) {
-      const initCanvas: any = new Canvas(canvasRef.current, {
-        width: 500,
-        height: 500,
-      });
-      initCanvas.backgroundColor = "#fefcaf";
-      initCanvas.renderAll();
-      setCanvas(initCanvas);
-      return () => {
-        initCanvas.dispose();
-      };
-    }
-  }, []);
+  useEffect(
+    () => {
+      if (canvasRef.current) {
+        const initCanvas: any = new Canvas(canvasRef.current, {
+          width: 500,
+          height: 500,
+        });
+        initCanvas.backgroundColor = "#fefcaf";
+        initCanvas.renderAll();
+        setCanvas(initCanvas);
+        return () => {
+          initCanvas.dispose();
+        };
+      }
+    },
+    [
+      // make screen size a dependency?
+    ]
+  );
 
   const addNewCanvas = () => {
     if (canvas) {
@@ -101,23 +106,48 @@ const DrawingPad = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center">
-      <nav>
-        <button className="border-8 m-5" onClick={addNewCanvas}>
+      <nav className="flex flex-wrap justify-center gap-4 mb-6">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-all"
+          onClick={addNewCanvas}
+        >
           Reset Canvas
         </button>
-        <button className="border-8 m-5" onClick={addTextBox}>
+        <button
+          className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-all"
+          onClick={addTextBox}
+        >
           Text box
         </button>
-        <button className="border-8 m-5" onClick={togglePen}>
+        <button
+          className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+          onClick={togglePen}
+        >
           Toggle Pen
         </button>
-        <button className="border-8 m-5" onClick={deleteItem}>
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition-all"
+          onClick={deleteItem}
+        >
           Delete selected item
         </button>
       </nav>
-      <canvas className="border-8 m-5" id="canvas" ref={canvasRef}></canvas>
-      <label htmlFor="friends">Send to:</label>
-      <select id="friends" onChange={handleRecipientChange}>
+      <canvas
+        className="w-3/4 h-96 border-4 border-gray-300 shadow-md rounded-lg bg-yellow-200"
+        id="canvas"
+        ref={canvasRef}
+      ></canvas>
+      <label
+        htmlFor="friends"
+        className="text-lg mt-3 font-semibold text-gray-700 mb-2"
+      >
+        Send to:
+      </label>
+      <select
+        id="friends"
+        className="w-48 border mb-3 border-gray-300 rounded-lg p-2 shadow-sm focus:ring-2 focus:ring-blue-400"
+        onChange={handleRecipientChange}
+      >
         <option value="default" defaultValue={"default"}>
           Select Friend
         </option>
@@ -129,10 +159,17 @@ const DrawingPad = () => {
           );
         })}
       </select>
-      <button className="border-8 m-10" onClick={sendLetter}>
+      <button
+        className="bg-purple-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-600 transition-all"
+        onClick={sendLetter}
+      >
         Send Letter
       </button>
-      {missingRecipient ? <p>Please select a recipient</p> : null}
+      {missingRecipient ? (
+        <p className="mt-4 text-red-500 font-semibold">
+          Please select a recipient
+        </p>
+      ) : null}
     </div>
   );
 };
