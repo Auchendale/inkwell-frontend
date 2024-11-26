@@ -85,7 +85,6 @@ const LetterViewer = () => {
         params: {
           recipient: user.username,
           is_opened: false,
-          limit: 21,
         },
       })
       .then((res) => {

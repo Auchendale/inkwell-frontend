@@ -38,11 +38,24 @@ const SelectedLetter: FC<Props> = ({ id }) => {
       .get(`https://inkwell-backend-j9si.onrender.com/api/letters/${id}`)
       .then((res) => {
         setLetter(res.data.letter);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  }, [letter, id]);
+  }, [id]);
 
   const router = useRouter();
-
+  const markRead = () => {
+    const body = { is_opened: true };
+    axios
+      .patch(
+        `https://inkwell-backend-j9si.onrender.com/api/letters/${id}`,
+        body
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
   return (
     <>
       <Nav />
@@ -57,14 +70,19 @@ const SelectedLetter: FC<Props> = ({ id }) => {
           alt={`letter from ${letter.sender}`}
         />
       </div>
-      <button
-        className="btn absolute border my-40 bg-white  p-3 rounded-xl top-3/4 left-1/2 transform -translate-x-1/2"
-        onClick={() => {
-          router.push("/user");
-        }}
-      >
-        Back
-      </button>
+      <div className="absolute border my-40 bg-white  p-3 rounded-xl top-3/4 left-1/2 transform -translate-x-1/2">
+        <button className="btn" onClick={markRead}>
+          Mark Read
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            router.push("/user");
+          }}
+        >
+          Back
+        </button>
+      </div>
     </>
   );
 };
