@@ -23,7 +23,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
   return (
     <Link href="/bulletin-page">
       <div
-        className="m-3 dark:bg-gray-800 bg-white shadow-lg rounded-xl flex flex-col items-center p-4 hover:shadow-2xl transition-all cursor-pointer"
+        className="m-3 bg-white shadow-lg rounded-xl flex flex-col items-center p-4 hover:shadow-2xl transition-all cursor-pointer"
         onClick={() => {
           setUser({
             username: singleUser.username,
@@ -55,7 +55,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
           className="mb-2"
           src={`https://flagsapi.com/${countryCode}/shiny/64.png`}
         />
-        <p className="text-lg font-semibold text-gray-900 dark:text-white">
+        <p className="text-lg font-semibold text-gray-900">
           {singleUser.username}
         </p>
       </div>
