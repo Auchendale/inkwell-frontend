@@ -64,7 +64,7 @@ function AllLetters() {
             <Link href={`/view-letter/${letter._id}`}>
               {letter.is_opened ? (
                   <Image
-                  src={require("../../assets/opened_letter1.png")}
+                  src={require("../../assets/opened_letter2.png")}
                   alt={`letter from ${letter.sender}`}
                   width={120}
                   height={120}
@@ -72,7 +72,7 @@ function AllLetters() {
                   />
                 ) : (
                     <Image
-                    src={require("../../assets/closed_letter_sealed1.png")}
+                    src={require("../../assets/closed_letter_sealed2.png")}
                   alt={`letter from ${letter.sender}`}
                   width={120}
                   height={120}
