@@ -29,7 +29,7 @@ const UserLister = () => {
   }, []);
 
   if (isLoading) {
-    return <LoadingBar/>;
+    return <LoadingBar />;
   }
 
   return (
