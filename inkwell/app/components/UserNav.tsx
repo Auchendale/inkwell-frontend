@@ -14,10 +14,10 @@ const UserNav = () => {
         Write a new letter
       </Link>
       <Link
-        href={"/user/posts"}
+        href={"/new-post"}
         className="mx-5 text-white hover:text-blue-800"
       >
-        Posts
+        New post
       </Link>
     </nav>
   );

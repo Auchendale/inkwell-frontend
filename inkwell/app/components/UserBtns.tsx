@@ -16,9 +16,11 @@ const UserBtns = () => {
           Write a new letter
         </button>
       </Link>
+      <Link href={"/new-post"}>
       <button className="w-full p-3 text-center bg-green-500 text-white rounded-md shadow-lg hover:bg-green-600">
         Post on the bulletin board
-      </button>
+      </button>      
+      </Link>
       <button className="w-full p-3 text-center bg-yellow-500 text-white rounded-md shadow-lg hover:bg-yellow-600">
         Saved letters
       </button>
