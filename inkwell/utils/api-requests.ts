@@ -21,3 +21,12 @@ export function getLetter(id: String) {
     return response;
   });
 }
+
+export function getAllLetters(username:String, sortOption:String){
+    return apiClient.get("/letters", {params: {
+        recipient: username,
+        sort_by: sortOption
+    }}).then((response) => {
+        return response
+    })
+}

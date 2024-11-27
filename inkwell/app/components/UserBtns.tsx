@@ -21,9 +21,11 @@ const UserBtns = () => {
         Post on the bulletin board
       </button>      
       </Link>
+      <Link href={"./all-letters"}>
       <button className="w-full p-3 text-center bg-yellow-500 text-white rounded-md shadow-lg hover:bg-yellow-600">
-        Saved letters
+        All letters
       </button>
+      </Link>
       <button className="w-full p-3 text-center bg-gray-500 text-white rounded-md shadow-lg hover:bg-gray-600">
         Settings
       </button>
