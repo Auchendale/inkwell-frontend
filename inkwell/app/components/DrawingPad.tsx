@@ -95,12 +95,11 @@ const DrawingPad = () => {
   };
 
   const sendEmailNotification = () => {
-    console.log("function triggered");
     axios
       .post("https://inkwell-backend-j9si.onrender.com/api/send-mail", {
         name: user.username,
         recipient,
-        to: "uarukonda@gmail.com",
+        to: "test.inkwell@yahoo.com",
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
