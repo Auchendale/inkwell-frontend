@@ -86,19 +86,19 @@ const SelectedLetter: FC<Props> = ({ id }) => {
           alt={`letter from ${letter.sender}`}
         />
       </div>
-      <div className="absolute border my-40 bg-white  p-3 rounded-xl top-3/4 left-1/2 transform -translate-x-1/2">
+      <div className="absolute my-40 p-3 rounded-xl top-3/4 left-1/2 transform -translate-x-1/2">
         {isOpened ? (
-          <button className="btn m-3" onClick={markUnread}>
+          <button className="btn m-3 border-white" onClick={markUnread}>
             Mark Unread
           </button>
         ) : (
-          <button className="btn m-3" onClick={markRead}>
+          <button className="btn m-3 border-white" onClick={markRead}>
             Mark Read
           </button>
         )}
 
         <button
-          className="btn m-3"
+          className="btn m-3 border-white"
           onClick={() => {
             router.push("/user");
           }}
