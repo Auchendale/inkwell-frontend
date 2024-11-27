@@ -38,9 +38,9 @@ const LikeButton: FC<PostProps> = ({ post }) => {
   };
 
   return (
-    <div>
-      <p>{currentLikes}</p>
-      <button onClick={handleLike} className="btn">
+    <div className="font-serif border border-black bg-[#F9E7C8]  shadow-2xl rounded-lg mx-4">
+      <p className="text-center">{currentLikes}</p>
+      <button onClick={handleLike} className="btn bg-[#F9D491] border-2 border-black">
         {isClicked ? "Unlike" : "Like"}
       </button>
     </div>
