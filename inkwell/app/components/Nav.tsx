@@ -35,7 +35,7 @@ const Nav = () => {
   }, [user.username]);
 
   return (
-    <nav className="flex gap-8 p-4 dark:bg-gray-700 border-none shadow-lg flex-wrap">
+    <nav className="flex gap-8 p-4 border-none shadow-lg flex-wrap">
       <Link
         href="/"
         className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"

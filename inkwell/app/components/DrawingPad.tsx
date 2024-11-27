@@ -161,7 +161,7 @@ const DrawingPad = () => {
       </label>
       <select
         id="friends"
-        className="w-48 border mb-3 border-gray-300 rounded-lg p-2 shadow-sm focus:ring-2 focus:ring-blue-400"
+        className="w-48 border mb-3 border-gray-300 rounded-lg p-2 shadow-sm focus:ring-2 focus:ring-blue-400 bg-white"
         onChange={handleRecipientChange}
       >
         <option value="default" defaultValue={"default"}>
