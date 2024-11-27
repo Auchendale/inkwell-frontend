@@ -23,8 +23,7 @@ function AllLetters() {
   const [letters, setLetters] = useState<Array<LetterType>>([]);
   const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
-  const [sortOption, setSortOption] = useState<string>("date_sent")
-  
+  const [sortOption, setSortOption] = useState<string>("date_sent");
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,56 +35,61 @@ function AllLetters() {
       .catch((err) => err);
   }, [user.username, sortOption]);
 
-  const handleChange = (event:ChangeEvent<HTMLSelectElement>) => {
-    setSortOption(event.currentTarget.value)
-  }
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSortOption(event.currentTarget.value);
+  };
 
-  if(isLoading){
-    return(
-        <LoadingBar/>
-    )
+  if (isLoading) {
+    return <LoadingBar />;
   }
 
   return (
     <>
-    <label htmlFor="sort" className="ml-5">Sort:</label>
-    <select id="sort" className="p-2 m-5 border-2 rounded" onChange={handleChange} value={sortOption}>
+      <label htmlFor="sort" className="ml-5">
+        Sort:
+      </label>
+      <select
+        id="sort"
+        className="p-2 m-5 border-2 rounded"
+        onChange={handleChange}
+        value={sortOption}
+      >
         <option value="date_sent">date sent</option>
         <option value="sender">sender</option>
         <option value="is_opened">read</option>
       </select>
-    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-evenly p-4">
-      {letters.map((letter: LetterType) => {
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-evenly p-4">
+        {letters.map((letter: LetterType) => {
           return (
-              <li
+            <li
               key={letter._id}
               className="border border-gray-300 rounded-lg shadow-lg flex flex-col items-center p-4 bg-white hover:shadow-xl transition-all"
-              >
-            <Link href={`/view-letter/${letter._id}`}>
-              {letter.is_opened ? (
+            >
+              <Link href={`/view-letter/${letter._id}`}>
+                {letter.is_opened ? (
                   <Image
-                  src={require("../../assets/opened_letter2.png")}
-                  alt={`letter from ${letter.sender}`}
-                  width={120}
-                  height={120}
-                  className="mb-4"
+                    src={require("../../assets/opened_letter2.png")}
+                    alt={`letter from ${letter.sender}`}
+                    width={120}
+                    height={120}
+                    className="mb-4"
                   />
                 ) : (
-                    <Image
+                  <Image
                     src={require("../../assets/closed_letter_sealed2.png")}
-                  alt={`letter from ${letter.sender}`}
-                  width={120}
-                  height={120}
-                  className="mb-4 mt-10"
+                    alt={`letter from ${letter.sender}`}
+                    width={120}
+                    height={120}
+                    className="mb-4 mt-10"
                   />
                 )}
-            </Link>
-            <p className="text-lg font-semibold text-gray-700 ">{`From: ${letter.sender}`}</p>
-            <p className="text-sm text-gray-500">{`Date: ${letter.date_sent}`}</p>
-          </li>
-        );
-    })}
-    </ul>
+              </Link>
+              <p className="text-lg font-semibold text-gray-700 ">{`From: ${letter.sender}`}</p>
+              <p className="text-sm text-gray-500">{`Date: ${letter.date_sent}`}</p>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
