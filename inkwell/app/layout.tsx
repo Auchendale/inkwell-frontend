@@ -3,7 +3,7 @@ import "./globals.css";
 import UserProvider from "../contexts/user-context";
 
 export const metadata: Metadata = {
-  title: "Inkwell",
+  title: "InkWell",
   description: "E-Pen Pals",
 };
 
