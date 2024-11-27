@@ -52,7 +52,7 @@ export default function SubmitPost() {
         </label>
         <textarea
           required={true}
-          className="p-5 m-5"
+          className="p-5 m-5 bg-white"
           id="post"
           value={postText}
           onChange={handlePostChange}
