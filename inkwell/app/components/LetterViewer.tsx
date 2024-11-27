@@ -9,9 +9,11 @@ const emptyBox0 = require("../../assets/emptyBox0.png");
 const emptyBox1 = require("../../assets/emptyBox1.png");
 const emptyBox2 = require("../../assets/emptyBox2.png");
 const emptyBox3 = require("../../assets/emptyBox3.png");
+const emptyBox4 = require("../../assets/emptyBox4.png");
 const letterInBox1 = require("../../assets/letterInBox1.png");
 const letterInBox2 = require("../../assets/letterInBox2.png");
 const letterInBox3 = require("../../assets/letterInBox3.png");
+
 
 type LetterType = {
   _id: string;
@@ -62,13 +64,42 @@ const LetterViewer = () => {
       emptyBox0,
       emptyBox0,
       emptyBox0,
+      emptyBox0,
+      emptyBox0,
+      emptyBox0,
       emptyBox1,
       emptyBox1,
       emptyBox1,
+      emptyBox1,
+      emptyBox1,
+      emptyBox1,
+      emptyBox2,
+      emptyBox2,
       emptyBox2,
       emptyBox2,
       emptyBox2,
       emptyBox3,
+      emptyBox3,
+      emptyBox0,
+      emptyBox0,
+      emptyBox0,
+      emptyBox0,
+      emptyBox0,
+      emptyBox0,
+      emptyBox1,
+      emptyBox1,
+      emptyBox1,
+      emptyBox1,
+      emptyBox1,
+      emptyBox1,
+      emptyBox2,
+      emptyBox2,
+      emptyBox2,
+      emptyBox2,
+      emptyBox2,
+      emptyBox3,
+      emptyBox3,
+      emptyBox4,
     ];
     const item = arr[Math.floor(Math.random() * arr.length)];
     return item;
