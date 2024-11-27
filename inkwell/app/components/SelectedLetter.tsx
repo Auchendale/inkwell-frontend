@@ -73,38 +73,44 @@ const SelectedLetter: FC<Props> = ({ id }) => {
   return (
     <>
       <Nav />
-      <div className="absolute border bg-white  p-3 rounded-xl top-1/4 left-1/2 transform -translate-x-1/2 text-black">
-        <p>from: {letter.sender}</p>
-        <p>date: {letter.date_sent}</p>
-        <p>{isOpened ? "Read" : "Unread"}</p>
-        <p></p>
-      </div>
-      <div className="letter-container">
+      <div className="letter-container flex flex-col">
+        <section className="bg-white bg-opacity-80 p-3 m-3 rounded">
+          <h1>
+            <strong>Letter Details:</strong>
+          </h1>
+          <p>
+            From: <strong>{letter.sender}</strong>
+          </p>
+          <p>Sent: {letter.date_sent}</p>
+          <p>
+            <strong>{isOpened ? "Previously read" : "Unread"}</strong>
+          </p>
+          <p></p>
+        </section>
         <img
           className="letter-image"
           src={letter.content.letter}
           alt={`letter from ${letter.sender}`}
         />
-      </div>
-      <div className="absolute my-40 p-3 rounded-xl top-3/4 left-1/2 transform -translate-x-1/2">
-        {isOpened ? (
-          <button className="btn m-3 border-white" onClick={markUnread}>
-            Mark Unread
+        <div className="p-1 m-1">
+          {isOpened ? (
+            <button className="btn m-3 border-white" onClick={markUnread}>
+              Mark Unread
+            </button>
+          ) : (
+            <button className="btn m-3 border-white" onClick={markRead}>
+              Mark Read
+            </button>
+          )}
+          <button
+            className="btn m-3 border-white"
+            onClick={() => {
+              router.push("/user");
+            }}
+          >
+            Back
           </button>
-        ) : (
-          <button className="btn m-3 border-white" onClick={markRead}>
-            Mark Read
-          </button>
-        )}
-
-        <button
-          className="btn m-3 border-white"
-          onClick={() => {
-            router.push("/user");
-          }}
-        >
-          Back
-        </button>
+        </div>
       </div>
     </>
   );
