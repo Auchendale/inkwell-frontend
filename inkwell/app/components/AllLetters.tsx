@@ -50,7 +50,7 @@ function AllLetters() {
       </label>
       <select
         id="sort"
-        className="p-2 m-5 border-2 rounded"
+        className="p-2 m-5 border-2 rounded bg-white"
         onChange={handleChange}
         value={sortOption}
       >
