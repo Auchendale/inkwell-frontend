@@ -8,6 +8,8 @@ const parchmentBackground1 = require("../../assets/parchment4.png");
 const parchmentBackground2 = require("../../assets/parchment2.png");
 const parchmentBackground3 = require("../../assets/parchment3.png");
 const bulletinRoof = require("../../assets/bulletin roof.png");
+const bulletinBottom = require("../../assets/bulletin bottom.png");
+
 const { formatDate, formatTime } = require("../../utils/utils");
 
 type PostType = {
@@ -77,6 +79,13 @@ const BulletinBoard = () => {
             );
           })}
         </ul>
+      </div>
+      <div>
+        <Image
+          src={bulletinBottom}
+          alt="Hand drawn legs of bulletin bottom"
+          width={10000}
+        />
       </div>
     </>
   );
