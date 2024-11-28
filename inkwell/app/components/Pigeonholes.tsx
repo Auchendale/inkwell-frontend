@@ -38,7 +38,7 @@ const emptyLetter = {
   date_sent: "skoo",
 };
 
-const LetterViewer = () => {
+const Pigeonholes = () => {
   const [letters, setLetters] = useState<Array<LetterType>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { user } = useContext(UserContext);
@@ -168,4 +168,4 @@ const LetterViewer = () => {
   );
 };
 
-export default LetterViewer;
+export default Pigeonholes;

@@ -22,12 +22,11 @@ type LetterType = {
 function AllLetters() {
   const [letters, setLetters] = useState<Array<LetterType>>([]);
   const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState<Boolean>(false);
+  const [isLoading, setIsLoading] = useState<Boolean>(true);
   const [sortOption, setSortOption] = useState<string>("date_sent");
   const [orderOption, setOrderOption] = useState<string>("desc");
 
   useEffect(() => {
-    setIsLoading(true);
     getAllLetters(user.username, sortOption, orderOption)
       .then((res) => {
         setLetters(res.data.letters);
@@ -44,9 +43,7 @@ function AllLetters() {
     setOrderOption(event.currentTarget.value);
   };
 
-  if (isLoading) {
-    return <LoadingBar />;
-  }
+  if (isLoading) return <LoadingBar />;
 
   return (
     <>
