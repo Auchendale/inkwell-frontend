@@ -49,6 +49,12 @@ const Nav = () => {
         Change User
       </Link>
       <Link
+        href="/user"
+        className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
+      >
+        Pigeonholes
+      </Link>
+      <Link
         href="/bulletin-page"
         className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
       >
@@ -70,6 +76,18 @@ const Nav = () => {
           )}
         </div>
       ) : null}
+      <Link
+        href="/new-letter"
+        className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
+      >
+        Write a new letter
+      </Link>
+      <Link
+        href="/new-post"
+        className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
+      >
+        Write a new post
+      </Link>
       <Link
         href="/"
         className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
