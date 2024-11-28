@@ -14,7 +14,6 @@ const letterInBox1 = require("../../assets/letterInBox1.png");
 const letterInBox2 = require("../../assets/letterInBox2.png");
 const letterInBox3 = require("../../assets/letterInBox3.png");
 
-
 type LetterType = {
   _id: string;
   sender: string;
@@ -40,7 +39,6 @@ const emptyLetter = {
 };
 
 const LetterViewer = () => {
-  // const [isClicked, setIsClicked] = useState(false);
   const [letters, setLetters] = useState<Array<LetterType>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { user } = useContext(UserContext);
@@ -134,20 +132,8 @@ const LetterViewer = () => {
     return <LoadingBar />;
   }
 
-  // const toggleImage = (event: unknown) => {
-  //   setIsClicked(true);
-  //   if (event) {
-  //     event.target.src =
-  //       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-MwAVC7tp1X4t0WX9awgt7-PGAi7vkz9jfg&s";
-  //   } else {
-  //     event.target.src =
-  //       "https://img.freepik.com/premium-vector/envelope-icon-cartoon-illustration-envelope-vector-icon-web_96318-33446.jpg";
-  //   }
-  //   letter.is_read = true;
-  // };
-
   return (
-    <>
+    <div className="border-4 border-amber-900">
       <ul className="grid grid-cols-7 grid-rows-3 gap-5 bg-yellow-900">
         {letters.map((letter: LetterType, index: number) => {
           return (
@@ -178,7 +164,7 @@ const LetterViewer = () => {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 };
 

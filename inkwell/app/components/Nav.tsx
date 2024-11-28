@@ -48,18 +48,6 @@ const Nav = () => {
       >
         Change User
       </Link>
-      <Link
-        href="/user"
-        className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
-      >
-        Pigeonholes
-      </Link>
-      <Link
-        href="/bulletin-page"
-        className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
-      >
-        Bulletin Board
-      </Link>
       {user.username ? (
         <div className="flex items-center gap-2">
           <Link
@@ -76,6 +64,12 @@ const Nav = () => {
           )}
         </div>
       ) : null}
+      <Link
+        href="/bulletin-page"
+        className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"
+      >
+        Bulletin Board
+      </Link>
       <Link
         href="/new-letter"
         className="text-lg font-semibold hover:text-blue-500 transition-all duration-300"

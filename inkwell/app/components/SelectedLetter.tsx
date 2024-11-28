@@ -1,9 +1,12 @@
-import axios from "axios";
 import { FC, useEffect, useState } from "react";
 import "../../assets/css/selected-letter.css"; // Import the new CSS file
 import Nav from "./Nav";
 import { useRouter } from "next/navigation";
-import { deleteLetterById, getLetter, markLetterRead } from "@/utils/api-requests";
+import {
+  deleteLetterById,
+  getLetter,
+  markLetterRead,
+} from "@/utils/api-requests";
 import LoadingBar from "./LoadingBar";
 const { formatDate, formatTime } = require("../../utils/utils");
 
@@ -71,10 +74,8 @@ const SelectedLetter: FC<Props> = ({ id }) => {
     setIsLoading(true);
     deleteLetterById(id).then(() => {
       setIsLoading(false);
-      router.push("/user")
-    })
-
-    
+      router.push("/user");
+    });
   };
 
   if (isLoading) {
@@ -116,17 +117,13 @@ const SelectedLetter: FC<Props> = ({ id }) => {
               Mark Read
             </button>
           )}
-          <button
-            className="btn m-3 border-white"
-            onClick={deleteLetter}
-          >
+          <button className="btn m-3 border-white" onClick={deleteLetter}>
             Delete Letter
           </button>
           <button
             className="btn m-3 border-white"
             onClick={() => {
               router.push("/user");
-              
             }}
           >
             Back

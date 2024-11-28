@@ -16,7 +16,6 @@ const DrawingPad = () => {
   const { user } = useContext(UserContext);
   const router = useRouter();
 
-
   useEffect(() => {
     if (canvasRef.current) {
       const initCanvas = new Canvas(canvasRef.current, {
@@ -74,13 +73,18 @@ const DrawingPad = () => {
     axios
       .get(`https://inkwell-backend-j9si.onrender.com/api/users/${recipient}`)
       .then((response) => {
-        const recipientLoc = response.data.user.location
-        const km = distanceCalc(recipientLoc.long, recipientLoc.lat, user.location.long, user.location.lat)
-        const seconds = Math.floor(km/133)
-        const newTime = Date.now() + (seconds * 1000)
-        return newTime
-      })
-  }
+        const recipientLoc = response.data.user.location;
+        const km = distanceCalc(
+          recipientLoc.long,
+          recipientLoc.lat,
+          user.location.long,
+          user.location.lat
+        );
+        const seconds = Math.abs(km);
+        const newTime = Date.now() + seconds * 1000;
+        return newTime;
+      });
+  };
 
   const sendLetter = () => {
     if (recipient === "default") {
@@ -97,9 +101,9 @@ const DrawingPad = () => {
           sender: user.username,
           recipient: recipient,
           content: { letter: dataURL },
-          date_sent: dateSetter(recipient)
+          date_sent: dateSetter(recipient),
         })
-        .then((response) => {
+        .then(() => {
           setMissingRecipient(false);
           setIsLoading(false);
           router.push("/user");

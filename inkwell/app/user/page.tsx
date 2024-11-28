@@ -1,15 +1,17 @@
 import DarkLogo from "../components/DarkLogo";
+import LetterViewer from "../components/LetterViewer";
 import Nav from "../components/Nav";
-import PigeonHoles from "../components/PigeonHoles";
 import UserBtns from "../components/UserBtns";
+import WelcomeMsg from "../components/WelcomeMsg";
 
 export default function UserPage() {
   return (
     <section>
       <Nav />
       <DarkLogo />
+      <WelcomeMsg />
       <UserBtns />
-      <PigeonHoles />
+      <LetterViewer />
     </section>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { UserContext } from "@/contexts/user-context";
 import Link from "next/link";
 import Image from "next/image";
