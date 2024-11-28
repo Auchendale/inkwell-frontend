@@ -22,10 +22,11 @@ export function getLetter(id: String) {
   });
 }
 
-export function getAllLetters(username:String, sortOption:String){
+export function getAllLetters(username:String, sortOption:String, order){
     return apiClient.get("/letters", {params: {
         recipient: username,
-        sort_by: sortOption
+        sort_by: sortOption,
+        order: order
     }}).then((response) => {
         return response
     })
