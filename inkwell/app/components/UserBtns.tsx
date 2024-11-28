@@ -40,12 +40,7 @@ const UserBtns = () => {
         >
           User info
         </div>
-        <div
-          tabIndex={0}
-          className={`absolute left-0 bottom-0 mt-2 w-64 bg-white text-black rounded-lg shadow-lg z-[1] p-3 transition-all duration-300 ${
-            dropdownOpen ? "block" : "hidden"
-          }`}
-        >
+        <div tabIndex={0} className={` ${dropdownOpen ? "block" : "hidden"}`}>
           <UserDetails />
         </div>
       </div>
