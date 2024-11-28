@@ -29,6 +29,7 @@ var flagGetter = function (country) {
   }
   return countryCode;
 };
+
 var distanceCalc = function (longitude1, latitude1, longitude2, latitude2) {
   var radius = 6371;
   var lat1 = (latitude1 * Math.PI) / 180;

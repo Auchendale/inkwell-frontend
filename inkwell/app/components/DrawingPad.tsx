@@ -5,6 +5,7 @@ import { UserContext } from "@/contexts/user-context";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import LoadingBar from "./LoadingBar";
+const { distanceCalc } = require("../../utils/utils.ts");
 
 const DrawingPad = () => {
   const canvasRef = useRef(null);
@@ -14,6 +15,7 @@ const DrawingPad = () => {
   const [missingRecipient, setMissingRecipient] = useState<Boolean>(false);
   const { user } = useContext(UserContext);
   const router = useRouter();
+
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -68,6 +70,18 @@ const DrawingPad = () => {
     }
   };
 
+  const dateSetter = (recipient: string) => {
+    axios
+      .get(`https://inkwell-backend-j9si.onrender.com/api/users/${recipient}`)
+      .then((response) => {
+        const recipientLoc = response.data.user.location
+        const km = distanceCalc(recipientLoc.long, recipientLoc.lat, user.location.long, user.location.lat)
+        const seconds = Math.floor(km/133)
+        const newTime = Date.now() + (seconds * 1000)
+        return newTime
+      })
+  }
+
   const sendLetter = () => {
     if (recipient === "default") {
       setMissingRecipient(true);
@@ -83,6 +97,7 @@ const DrawingPad = () => {
           sender: user.username,
           recipient: recipient,
           content: { letter: dataURL },
+          date_sent: dateSetter(recipient)
         })
         .then((response) => {
           setMissingRecipient(false);
