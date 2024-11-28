@@ -42,6 +42,7 @@ var distanceCalc = function (longitude1, latitude1, longitude2, latitude2) {
             Math.sin(disLons / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = radius * c;
-    return d; // distance in km
+    const seconds = Math.ceil(d/8000)
+    return d // distance in km
 };
 module.exports = { flagGetter: flagGetter, distanceCalc: distanceCalc };
