@@ -8,8 +8,8 @@ export default function UserPage() {
     <section>
       <Nav />
       <DarkLogo />
-      <PigeonHoles />
       <UserBtns />
+      <PigeonHoles />
     </section>
   );
 }

@@ -56,7 +56,7 @@ const DrawingPad = () => {
         fontStyle: "italic",
         fontFamily: "font-sans",
         width: 400,
-        left: 10
+        left: 10,
       });
       canvas.add(textBox);
     }
@@ -87,7 +87,7 @@ const DrawingPad = () => {
         .then((response) => {
           setMissingRecipient(false);
           setIsLoading(false);
-          router.push("/bulletin-page");
+          router.push("/user");
         })
         .catch((err) => {
           console.log(err);
