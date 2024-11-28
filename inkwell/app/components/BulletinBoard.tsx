@@ -1,6 +1,5 @@
 "use client";
 import axios from "axios";
-import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import LikeButton from "./LikeButton";
@@ -35,7 +34,6 @@ const BulletinBoard = () => {
     axios
       .get("https://inkwell-backend-j9si.onrender.com/api/posts")
       .then((response) => {
-        console.log(response.data.posts);
         setPosts(response.data.posts);
       });
   }, []);

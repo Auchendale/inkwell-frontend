@@ -31,8 +31,7 @@ const LikeButton: FC<PostProps> = ({ post }) => {
         `https://inkwell-backend-j9si.onrender.com/api/posts/${post._id}`,
         { likes: likeValue }
       )
-      .then((response) => {
-        console.log(isClicked);
+      .then(() => {
         setIsClicked(!isClicked);
       });
   };
@@ -40,7 +39,10 @@ const LikeButton: FC<PostProps> = ({ post }) => {
   return (
     <div className="font-serif border border-black bg-[#F9E7C8]  shadow-2xl rounded-lg mx-4">
       <p className="text-center">{currentLikes}</p>
-      <button onClick={handleLike} className="btn bg-[#F9D491] border-2 border-black">
+      <button
+        onClick={handleLike}
+        className="btn bg-[#F9D491] border-2 border-black"
+      >
         {isClicked ? "Unlike" : "Like"}
       </button>
     </div>

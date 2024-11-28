@@ -1,3 +1,4 @@
+"use client";
 import { FC, useContext } from "react";
 import { UserContext } from "@/contexts/user-context";
 import Link from "next/link";
