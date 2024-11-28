@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllLetters } from "@/utils/api-requests";
 import LoadingBar from "./LoadingBar";
+const { formatDate, formatTime } = require("../../utils/utils");
 
 type LetterType = {
   _id: string;
@@ -102,7 +103,9 @@ function AllLetters() {
                 )}
               </Link>
               <p className="text-lg font-semibold text-gray-700 ">{`From: ${letter.sender}`}</p>
-              <p className="text-sm text-gray-500">{`Date: ${letter.date_sent}`}</p>
+              <p className="text-sm text-gray-500">{`Date: ${formatDate(
+                letter.date_sent
+              )} ${formatTime(letter.date_sent)}`}</p>
             </li>
           );
         })}

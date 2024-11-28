@@ -7,8 +7,8 @@ import LikeButton from "./LikeButton";
 const parchmentBackground1 = require("../../assets/parchment4.png");
 const parchmentBackground2 = require("../../assets/parchment2.png");
 const parchmentBackground3 = require("../../assets/parchment3.png");
-const bulletinRoof = require("../../assets/bulletin roof.png")
-
+const bulletinRoof = require("../../assets/bulletin roof.png");
+const { formatDate, formatTime } = require("../../utils/utils");
 
 type PostType = {
   _id: string;
@@ -18,28 +18,15 @@ type PostType = {
   date: string;
 };
 
-const formatDate = (dateTime: string) => {
-  const splitDateTime = dateTime.split('T');
-  const splitDate = splitDateTime[0].split('-');
-  const formattedDate = splitDate.reverse().join('-');
-  return formattedDate;
-};
-
-const formatTime = (dateTime: string) => {
-  const splitDateTime = dateTime.split('T');
-  const time = splitDateTime[1].slice(0, 5);
-  if(Number(time.substring(0,2))<12){
-    return time + " am"
-  }
-  else 
-  return time + " pm";
-};
-
 const randomPaper = () => {
-  const arr = [parchmentBackground1, parchmentBackground2, parchmentBackground3]
+  const arr = [
+    parchmentBackground1,
+    parchmentBackground2,
+    parchmentBackground3,
+  ];
   const item = arr[Math.floor(Math.random() * arr.length)];
   return item;
-}
+};
 
 const BulletinBoard = () => {
   const [posts, setPosts] = useState<Array<PostType>>([]);
@@ -55,34 +42,39 @@ const BulletinBoard = () => {
 
   return (
     <>
-    <div>
-      <Image src={bulletinRoof} alt="Hand drawn blue roof of bulletin board" width={10000} />
-    </div>
-    <div className="mx-36">
-        <ul className="flex flex-wrap gap-5 justify-center bg-[#523627]"  >
+      <div>
+        <Image
+          src={bulletinRoof}
+          alt="Hand drawn blue roof of bulletin board"
+          width={10000}
+        />
+      </div>
+      <div className="mx-36">
+        <ul className="flex flex-wrap gap-5 justify-center bg-[#523627]">
           {posts.map((post: PostType) => {
             return (
               <li key={post._id} className="relative font-mono">
                 <Image
-                src={randomPaper()}
-                alt ="Hand drawn piece of paper nailed to board"
-                width = {500}
+                  src={randomPaper()}
+                  alt="Hand drawn piece of paper nailed to board"
+                  width={500}
                 />
                 <div className="absolute inset-0 flex m-10 p-10">
                   <p className="m-1">
                     {post.post}
                     <br></br>
-                    by {post.user} at {formatTime(post.date)}, {formatDate(post.date)}
-                    </p>
+                    by {post.user} at {formatTime(post.date)},{" "}
+                    {formatDate(post.date)}
+                  </p>
                 </div>
-                <div className="absolute bottom-0 right-0 m-10 p-10" >
+                <div className="absolute bottom-0 right-0 m-10 p-10">
                   <LikeButton post={post} />
                 </div>
               </li>
             );
           })}
         </ul>
-    </div>
+      </div>
     </>
   );
 };
