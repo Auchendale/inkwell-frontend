@@ -24,19 +24,24 @@ function AllLetters() {
   const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [sortOption, setSortOption] = useState<string>("date_sent");
+  const [orderOption, setOrderOption] = useState<string>("desc");
 
   useEffect(() => {
     setIsLoading(true);
-    getAllLetters(user.username, sortOption)
+    getAllLetters(user.username, sortOption, orderOption)
       .then((res) => {
         setLetters(res.data.letters);
         setIsLoading(false);
       })
       .catch((err) => err);
-  }, [user.username, sortOption]);
+  }, [user.username, sortOption, orderOption]);
 
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeSort = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortOption(event.currentTarget.value);
+  };
+
+  const handleChangeOrder = (event: ChangeEvent<HTMLSelectElement>) => {
+    setOrderOption(event.currentTarget.value);
   };
 
   if (isLoading) {
@@ -51,12 +56,24 @@ function AllLetters() {
       <select
         id="sort"
         className="p-2 m-5 border-2 rounded bg-white"
-        onChange={handleChange}
+        onChange={handleChangeSort}
         value={sortOption}
       >
         <option value="date_sent">date sent</option>
         <option value="sender">sender</option>
         <option value="is_opened">read</option>
+      </select>
+      <label htmlFor="order" className="ml-5">
+        Order:
+      </label>
+      <select
+        id="order"
+        className="p-2 m-5 border-2 rounded bg-white"
+        onChange={handleChangeOrder}
+        value={orderOption}
+      >
+        <option value="desc">Desc.</option>
+        <option value="asc">Asc.</option>
       </select>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-evenly p-4">
         {letters.map((letter: LetterType) => {

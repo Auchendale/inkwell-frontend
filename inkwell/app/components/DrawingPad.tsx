@@ -55,7 +55,8 @@ const DrawingPad = () => {
       const textBox = new Textbox("Write your letter here", {
         fontStyle: "italic",
         fontFamily: "font-sans",
-        width: 200,
+        width: 400,
+        left: 10
       });
       canvas.add(textBox);
     }
