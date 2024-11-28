@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import LikeButton from "./LikeButton";
+import LoadingBar from "./LoadingBar";
 const parchmentBackground1 = require("../../assets/parchment4.png");
 const parchmentBackground2 = require("../../assets/parchment2.png");
 const parchmentBackground3 = require("../../assets/parchment3.png");
@@ -29,14 +30,18 @@ const randomPaper = () => {
 
 const BulletinBoard = () => {
   const [posts, setPosts] = useState<Array<PostType>>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios
       .get("https://inkwell-backend-j9si.onrender.com/api/posts")
       .then((response) => {
         setPosts(response.data.posts);
+        setIsLoading(false);
       });
   }, []);
+
+  if (isLoading) return <LoadingBar />;
 
   return (
     <>
