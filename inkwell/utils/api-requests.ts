@@ -22,7 +22,7 @@ export function getLetter(id: String) {
   });
 }
 
-export function getAllLetters(username:String, sortOption:String, order){
+export function getAllLetters(username:String, sortOption:String, order: String){
     return apiClient.get("/letters", {params: {
         recipient: username,
         sort_by: sortOption,
