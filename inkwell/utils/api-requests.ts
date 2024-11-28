@@ -31,3 +31,8 @@ export function getAllLetters(username:String, sortOption:String, order: String)
         return response
     })
 }
+
+export function deleteLetterById(id:string){
+  return apiClient.delete(`/letters/${id}`)
+
+}
