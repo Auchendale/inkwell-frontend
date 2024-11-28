@@ -57,7 +57,8 @@ const DrawingPad = () => {
       const textBox = new Textbox("Write your letter here", {
         fontStyle: "italic",
         fontFamily: "font-sans",
-        width: 200,
+        width: 400,
+        left: 10,
       });
       canvas.add(textBox);
     }
@@ -101,7 +102,7 @@ const DrawingPad = () => {
         .then((response) => {
           setMissingRecipient(false);
           setIsLoading(false);
-          router.push("/bulletin-page");
+          router.push("/user");
         })
         .catch((err) => {
           console.log(err);

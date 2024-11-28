@@ -17,18 +17,20 @@ const UserBtns = () => {
         </button>
       </Link>
       <Link href={"/new-post"}>
-      <button className="w-full p-3 text-center bg-green-500 text-white rounded-md shadow-lg hover:bg-green-600">
-        Post on the bulletin board
-      </button>      
+        <button className="w-full p-3 text-center bg-green-500 text-white rounded-md shadow-lg hover:bg-green-600">
+          Post on the bulletin board
+        </button>
       </Link>
       <Link href={"./all-letters"}>
-      <button className="w-full p-3 text-center bg-yellow-500 text-white rounded-md shadow-lg hover:bg-yellow-600">
-        All letters
-      </button>
+        <button className="w-full p-3 text-center bg-yellow-500 text-white rounded-md shadow-lg hover:bg-yellow-600">
+          All letters
+        </button>
       </Link>
-      <button className="w-full p-3 text-center bg-gray-500 text-white rounded-md shadow-lg hover:bg-gray-600">
-        Settings
-      </button>
+      <Link href={"/bulletin-page"}>
+        <button className="w-full p-3 text-center bg-gray-500 text-white rounded-md shadow-lg hover:bg-gray-600">
+          View bulletin board
+        </button>
+      </Link>
       <div className="dropdown">
         <div
           tabIndex={0}
@@ -38,12 +40,7 @@ const UserBtns = () => {
         >
           User info
         </div>
-        <div
-          tabIndex={0}
-          className={`absolute left-0 bottom-0 mt-2 w-64 bg-white text-black rounded-lg shadow-lg z-[1] p-3 transition-all duration-300 ${
-            dropdownOpen ? "block" : "hidden"
-          }`}
-        >
+        <div tabIndex={0} className={` ${dropdownOpen ? "block" : "hidden"}`}>
           <UserDetails />
         </div>
       </div>

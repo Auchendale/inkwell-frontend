@@ -21,7 +21,7 @@ const UserBox: FC<UserProps> = ({ singleUser }) => {
   const countryCode = flagGetter(singleUser.location.country);
 
   return (
-    <Link href="/bulletin-page">
+    <Link href="/user">
       <div
         className="m-3 bg-white shadow-lg rounded-xl flex flex-col items-center p-4 hover:shadow-2xl transition-all cursor-pointer"
         onClick={() => {

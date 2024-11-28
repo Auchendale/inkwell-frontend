@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import { useRouter } from "next/navigation";
 import { getLetter, markLetterRead } from "@/utils/api-requests";
 import LoadingBar from "./LoadingBar";
+const { formatDate, formatTime } = require("../../utils/utils");
 
 interface Props {
   id: string;
@@ -81,7 +82,10 @@ const SelectedLetter: FC<Props> = ({ id }) => {
           <p>
             From: <strong>{letter.sender}</strong>
           </p>
-          <p>Sent: {letter.date_sent}</p>
+          <p>
+            Sent:{" "}
+            {`${formatDate(letter.date_sent)} ${formatTime(letter.date_sent)}`}
+          </p>
           <p>
             <strong>{isOpened ? "Previously read" : "Unread"}</strong>
           </p>

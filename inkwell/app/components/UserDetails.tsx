@@ -6,7 +6,7 @@ const UserDetails = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <section className="w-full sm:w-96 md:w-128 p-4 sm:p-8 md:p-12 border-4 border-gray-300 rounded-lg shadow-lg bg-white">
+    <section className=" absolute left-0 bottom-12 w-full sm:w-96 md:w-128 p-4 sm:p-8 md:p-12 border-4 border-gray-300 rounded-lg shadow-lg bg-white">
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">
         User Details
       </h2>
@@ -30,7 +30,7 @@ const UserDetails = () => {
         {user.friends.map((friend) => {
           return (
             <li
-              className="list-disc text-gray-700 mb-2 hover:text-blue-600 transition-colors"
+              className="list-none text-gray-700 mb-2 hover:text-blue-600 transition-colors"
               key={friend}
             >
               {friend}
